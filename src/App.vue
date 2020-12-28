@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Events</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/contact">Contact</router-link>
+      <!-- Use the :to property for dynamism and use route name instead of path -->
+      <!-- Path name may later be changed and that will have to be updated right through -->
+      <router-link :to="{ name: 'EventList' }">Events</router-link> |
+      <router-link :to="{ name: 'About' }">About</router-link> |
+      <router-link :to="{ name: 'Contact'}">Contact</router-link> |
+      <router-link :to="{ name: 'SimpleForm'}">Simple Form</router-link>
     </div>
     <!-- Similar to RenderBody -->
     <router-view />
