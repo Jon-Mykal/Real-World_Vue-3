@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import EventList from "../views/EventList.vue";
 import Contact from "../views/Contact.vue";
 import EventDetails from "../views/EventDetails.vue";
+import NotFound from "../views/NotFound.vue";
+import NetworkError from "../views/NetworkError.vue";
 
 const routes = [
   {
@@ -25,7 +27,7 @@ const routes = [
     component: Contact
   },
   {
-    path: "/event/:id",
+    path: "/events/:id",
     name: "EventDetails",
     props: true,
     component: EventDetails
@@ -33,8 +35,23 @@ const routes = [
   {
     path: "/simpleform",
     name: "SimpleForm",
-    component: () =>
-      import("../views/SimpleForm.vue")
+    component: () => import("../views/SimpleForm.vue")
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "NotFound",
+    component: NotFound
+  },
+  {
+    path: "/404/:resource",
+    name: "404Resource",
+    component: NotFound,
+    props: true
+  },
+  {
+    path: "/network-error",
+    name: "NetworkError",
+    component: NetworkError
   }
 ];
 

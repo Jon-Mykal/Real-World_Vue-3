@@ -16,18 +16,19 @@ export default {
   },
   data() {
     return {
-      events: null
+      events: null,
     };
   },
   created() {
     EventService.getEvents()
-    .then(res => {
-      this.events = res.data;
-      //console.log("events: ", res.data);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      .then((res) => {
+        this.events = res.data;
+        //console.log("events: ", res.data);
+      })
+      .catch(() => {
+
+          this.$router.push({ name: "NetworkError" });
+      });
   }
 };
 </script>
